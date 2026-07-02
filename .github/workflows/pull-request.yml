@@ -6,8 +6,8 @@ jobs:
     name: IO app test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
+      - uses: actions/checkout@61b9e3751b92087fd0b06925ba6dd6314e06f089 # master
+      - uses: actions/setup-node@60c11408891ef62846c29c28c2374afe5c91fad5 # master
         with:
           node-version: 12.x
         env:
@@ -15,7 +15,7 @@ jobs:
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: 'echo "::set-output name=dir::$(yarn cache dir)"'
-      - uses: actions/cache@v1
+      - uses: actions/cache@f5ce41475b483ad7581884324a6eca9f48f8dcc7 # v1
         id: yarn-cache
         with:
           path: '${{ steps.yarn-cache-dir-path.outputs.dir }}'
@@ -23,13 +23,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Run test on every builder directory
-        uses: vtex/action-io-app-test@master
+        uses: vtex/action-io-app-test@e4114023ff0b792f1f434e3613860b19b502ecba # master
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
+      - uses: actions/checkout@61b9e3751b92087fd0b06925ba6dd6314e06f089 # master
+      - uses: actions/setup-node@60c11408891ef62846c29c28c2374afe5c91fad5 # master
         with:
           node-version: 12.x
         env:
@@ -37,7 +37,7 @@ jobs:
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: 'echo "::set-output name=dir::$(yarn cache dir)"'
-      - uses: actions/cache@v1
+      - uses: actions/cache@f5ce41475b483ad7581884324a6eca9f48f8dcc7 # v1
         id: yarn-cache
         with:
           path: '${{ steps.yarn-cache-dir-path.outputs.dir }}'
@@ -45,4 +45,4 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Lint project
-        uses: vtex/action-lint@master
+        uses: vtex/action-lint@1b48ba98a5c54fa8736eac7057d6d07c0cfc604c # master
